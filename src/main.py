@@ -30,18 +30,17 @@ alert = Alerter(
     token=os.getenv("TELEGRAM_TOKEN")
 )
 
-
 alert.send("Program Started.")
 
-# for submission in reddit.api.subreddit("all").stream.submissions(skip_existing=True):
-#     if valid_title(submission.title):
-#         test = Offer(submission)
-#         if test.on_alert_list:
-#             alert.send(test.format_for_telegram())
-
-
-for submission in reddit.api.subreddit("hardwareswap").new(limit=50):
+for submission in reddit.api.subreddit("all").stream.submissions(skip_existing=True):
     if valid_title(submission.title):
         test = Offer(submission)
         if test.on_alert_list:
             alert.send(test.format_for_telegram())
+
+
+# for submission in reddit.api.subreddit("hardwareswap").new(limit=50):
+#     if valid_title(submission.title):
+#         test = Offer(submission)
+#         if test.on_alert_list:
+#             alert.send(test.format_for_telegram())
