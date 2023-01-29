@@ -26,6 +26,7 @@ def get_trade(title: str) -> tuple:
     match = re.search(pattern, normalized_title)
     return match.groups() if match is not None else None
 
-def process_selling(raw_item: str) -> list[str]:
+
+def process_selling(raw_item: str) -> list:
     normalized_text = raw_item.lower().strip()
     return normalized_text.split(",")

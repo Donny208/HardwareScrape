@@ -25,7 +25,7 @@ class Offer:
         self.on_alert_list = self.check_alert_list(self.selling)
 
     def check_alert_list(self, item: str) -> bool:
-        with open("./resources/filter.json", 'r') as file:
+        with open("./src/resources/filter.json", 'r') as file:
             data = json.load(file)
             for alert in data['alerts']:
                 if re.search(f".*{alert}.*", item):
