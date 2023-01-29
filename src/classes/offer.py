@@ -32,6 +32,13 @@ class Offer:
                     return True
         return False
 
+    def format_for_telegram(self):
+        output = f"{self.author}({self.author_trades} trades) @ {self.state}\n" \
+                 f"Selling: {self.selling}\n" \
+                 f"Wants: {self.buying}\n" \
+                 f"URL: {self.url}\n" \
+                 f"Created: {datetime.datetime.fromtimestamp(self.post_time)} MST"
+        return output
 
     def __str__(self):
         output = f"{self.author}({self.author_trades} trades) @ {self.state}\n" \
