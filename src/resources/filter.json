@@ -1,7 +1,7 @@
 {
   "alerts": [
     "3070", "3070ti",
-    "mini-itx", "mini itx",
+    "mini-itx", "mini itx", "itx",
     "sfx", "sff", "750w", "850w", "950w", "1050w",
     "q58",
     "aio"
