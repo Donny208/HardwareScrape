@@ -33,7 +33,9 @@ alert = Alerter(
 alert.send("Program Started.")
 
 for submission in reddit.api.subreddit("all").stream.submissions(skip_existing=True):
+    print(f"Checking Link: {submission.title}")
     if valid_title(submission.title):
+        print(" -> Valid.")
         test = Offer(submission)
         if test.on_alert_list:
             alert.send(test.format_for_telegram())
