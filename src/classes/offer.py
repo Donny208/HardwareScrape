@@ -1,5 +1,4 @@
 import json
-import re
 import datetime
 from praw.models import Submission
 from src.shared_methods import *
@@ -25,7 +24,7 @@ class Offer:
         self.on_alert_list = self.check_alert_list(self.selling)
 
     def check_alert_list(self, item: str) -> bool:
-        with open("./src/resources/filter.json", 'r') as file:
+        with open("./resources/filter.json", 'r') as file:
             data = json.load(file)
             for alert in data['alerts']:
                 if re.search(f".*{alert}.*", item):

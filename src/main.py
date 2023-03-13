@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from src.classes.reddit import Reddit
 from src.classes.alert import Alerter
 from src.classes.offer import Offer
+from src.classes.database.offer import insert
 from src.shared_methods import valid_title
 
 
@@ -32,15 +33,24 @@ alert = Alerter(
 
 alert.send("Program Started.")
 
-for submission in reddit.api.subreddit("all").stream.submissions(skip_existing=True):
+for submission in reddit.api.subreddit("hardwareswap").stream.submissions(skip_existing=True):
     if valid_title(submission.title):
-        test = Offer(submission)
-        if test.on_alert_list:
-            alert.send(test.format_for_telegram())
+        offer = Offer(submission)
+
+        if offer.on_alert_list:
+            alert.send(offer.format_for_telegram())
+
+        # Saving deal to database
+        insert(offer)
 
 
-# for submission in reddit.api.subreddit("hardwareswap").new(limit=50):
+# for submission in reddit.api.subreddit("hardwareswap").new(limit=1):
 #     if valid_title(submission.title):
-#         test = Offer(submission)
-#         if test.on_alert_list:
-#             alert.send(test.format_for_telegram())
+#         offer = Offer(submission)
+#
+#         # Sending out reminder if deal exists
+#         if offer.on_alert_list:
+#             alert.send(offer.format_for_telegram())
+#
+#         # Saving deal to database
+#         insert(offer)
