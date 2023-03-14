@@ -2,7 +2,7 @@ from mongoengine import *
 from dotenv import load_dotenv
 import os
 from src.classes.offer import Offer
-from time import strftime, localtime, sleep
+from time import strftime, localtime
 
 # Script Setup
 load_dotenv()
@@ -10,7 +10,7 @@ load_dotenv()
 # Connecting to DB
 connect(host=f'mongodb+srv://{os.getenv("mongodb_username")}:{os.getenv("mongodb_password")}@{os.getenv("mongodb_host")}/{os.getenv("mongodb_database")}?retryWrites=true&w=majority')
 
-#Variables
+# Variables
 db_requests = []
 
 class MongoOffer(Document):

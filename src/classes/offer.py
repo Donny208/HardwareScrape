@@ -19,8 +19,8 @@ class Offer:
         # Data from text cleanup
         trades = get_trade(self.raw_title)
         self.state = get_state(self.raw_title).upper()
-        self.selling = trades[0]
-        self.buying = trades[1]
+        self.selling = trades[0].trim()
+        self.buying = trades[1].trim()
         self.on_alert_list = self.check_alert_list(self.selling)
 
     def check_alert_list(self, item: str) -> bool:
