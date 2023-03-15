@@ -8,7 +8,13 @@ from time import strftime, localtime
 load_dotenv()
 
 # Connecting to DB
-connect(host=f'mongodb+srv://{os.getenv("mongodb_username")}:{os.getenv("mongodb_password")}@{os.getenv("mongodb_host")}/{os.getenv("mongodb_database")}?retryWrites=true&w=majority')
+connect(db=os.getenv("MONGODB_DATABASE"),
+        username=os.getenv("MONGODB_USERNAME"),
+        password=os.getenv("MONGODB_PASSWORD"),
+        host=os.getenv("MONGODB_HOST"),
+        retryWrites="true",
+        w="majority"
+)
 
 # Variables
 db_requests = []
