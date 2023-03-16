@@ -1,9 +1,9 @@
-import os
 from dotenv import load_dotenv
 import requests
 
 # Script Setup
 load_dotenv()
+
 
 class Alerter:
     def __init__(self, chat_id, token):
@@ -16,4 +16,7 @@ class Alerter:
             'chat_id': self.chat_id,
             'text': msg
         }
-        requests.post(url, json=payload)
+        try:
+            r = requests.post(url, json=payload)
+        except requests.exceptions.ConnectionError:
+            print("Connection Refused.")

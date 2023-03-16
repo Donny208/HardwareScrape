@@ -1,5 +1,4 @@
 import json
-import re
 import datetime
 from praw.models import Submission
 from src.shared_methods import *
