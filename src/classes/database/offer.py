@@ -47,3 +47,9 @@ def insert(offer: Offer) -> None:
     entry.buying = offer.buying
     entry.save()
     print(f"Inserted post {offer.id} into db.")
+
+
+if __name__ == "__main__":
+    for offer in MongoOffer.objects():
+        if ' ipad f' in offer.raw_title.lower():
+            print(f"{offer.raw_title} {offer.url}")
